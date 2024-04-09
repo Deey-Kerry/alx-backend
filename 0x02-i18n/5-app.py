@@ -8,7 +8,8 @@ from flask import Flask, render_template, request, g
 
 
 class Config:
-    """class configurations for flask"""
+    """Flask Babel configuration.
+    """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -27,7 +28,8 @@ users = {
 
 
 def get_user() -> Union[Dict, None]:
-    """Gets users using their id"""
+    """Gets user based on a user id.
+    """
     login_id = request.args.get('login_as')
     if login_id:
         return users.get(int(login_id))
@@ -36,14 +38,16 @@ def get_user() -> Union[Dict, None]:
 
 @app.before_request
 def before_request() -> None:
-    """Checks before the request is made"""
+    """Checks before each reques
+    """
     user = get_user()
     g.user = user
 
 
 @babel.localeselector
 def get_locale() -> str:
-    """Gets locale in string"""
+    """Gets the locale for a page.
+    """
     locale = request.args.get('locale', '')
     if locale in app.config["LANGUAGES"]:
         return locale
@@ -52,7 +56,8 @@ def get_locale() -> str:
 
 @app.route('/')
 def get_index() -> str:
-    """Gets index of the file"""
+    """Gets index page.
+    """
     return render_template('5-index.html')
 
 
