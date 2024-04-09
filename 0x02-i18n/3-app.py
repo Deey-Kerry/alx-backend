@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Flask Babel App support"""
+"""Flask Babel App support
+"""
 from flask_babel import Babel
 from flask import Flask, render_template, request
 
 
 class Config:
-    """class configurations for flask"""
+    """class configurations for flask
+    """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -26,7 +28,9 @@ def get_locale() -> str:
 
 @app.route('/')
 def get_index() -> str:
-    """Gets the index of the file"""
+    """
+    Gets the index of the file
+    """
     return render_template('3-index.html')
 
 

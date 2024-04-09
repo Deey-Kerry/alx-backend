@@ -39,7 +39,8 @@ def get_locale() -> str:
 
 @app.route('/')
 def get_index() -> str:
-    """Gets index of the file"""
+    """The home/index page.
+    """
     return render_template('4-index.html')
 
 
